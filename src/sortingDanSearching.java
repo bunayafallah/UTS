@@ -1,14 +1,60 @@
+import java.util.Scanner;
 
- import java.util.Arrays;
-public class sortingDanSearching {
+public class sortingDanSearching
+{
     public static void main(String[] args)
     {
-        int[] arr = { 3,10 ,4 ,2 ,8 ,13};
-  
-        Arrays.sort(arr);
-  
-        System.out.printf("Modified arr[] : %s",
-                          Arrays.toString(arr));
+        Scanner scan = new Scanner(System.in);
+        System.out.print("Masukkan jumlah Data : ");    
+        
+        int jlh_data = scan.nextInt(); 
+        int[] data = new int[jlh_data];
+        System.out.println();
+        for(int a = 0; a < jlh_data; a++)
+        {
+            System.out.print("Nilai Data ke-"+(a+1)+" : ");
+            data[a] = scan.nextInt();
+        }
+        
+        System.out.println("\nData Sebelum di Sorting");
+        for(int a = 0; a < jlh_data; a++)
+            System.out.print(data[a]+" ");
+        
+        System.out.println("\nProses Bubble Sort");
+        for(int a = 0; a < jlh_data; a++)
+        {
+            System.out.println("Iterasi ke-"+(a+1)+" :");
+            for(int b = 0; b < jlh_data; b++)
+                System.out.print(data[b]+"  ");
+            
+            System.out.println("   Bandingkan "+data[0]+" dengan "+data[1]);
+            for(int b = 0; b < jlh_data-1; b++)
+            {
+                String pesan = "   Tidak ada pertukaran";
+                if(data[b] > data[b+1])
+                {
+                    pesan = "   Data "+data[b]+" ditukar dengan "+data[b+1];
+                    int temp = data[b];
+                    data[b] = data[b+1];    
+                    data[b+1] = temp;
+                    
+                }
+            
+                if(b < jlh_data-(a+1))
+                {
+                    for(int c = 0; c < jlh_data; c++)
+                        System.out.print(data[c]+"  ");
+                    
+                    System.out.println(pesan);;
+                }
+            }
+
+            System.out.println("\n");
+        }
+        
+        System.out.print("Data Setelah di Sorting : ");
+        for(int a = 0; a < jlh_data; a++)
+            System.out.print(data[a]+"  ");
+        
     }
 }
-
