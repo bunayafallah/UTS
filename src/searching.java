@@ -1,25 +1,41 @@
-import java.util.Arrays;
-  
-public class searching{
-    public static void main(String[] args)
-    {
-        int arr[] = {3,10,4,2,8};
-        Arrays.sort(arr);
-  
-        int key = 8;
-        int res = Arrays.binarySearch(arr, key);
-        if (res >= 0)
-            System.out.println(key + " indekas pointer 2 = " 
-                                                  + res);
-        else
-            System.out.println(key + "cari dikanan");
-  
-        key =8;
-        res = Arrays.binarySearch(arr, key);
-        if (res >= 0)
-            System.out.println(key + " indeks pointer 3 = " 
-                                                  + res);
-        else
-            System.out.println(key + " data 8 telah ditemukan pada indeks ");
-    }
+import java.util.Scanner;
+class searching
+{
+   public static void main(String args[])
+   {
+      int counter, num, item, array[], first, last, middle;
+      Scanner input = new Scanner(System.in);
+      System.out.println("Enter number of elements:");
+      num = input.nextInt(); 
+
+      array = new int[num];
+
+      System.out.println("Enter " + num + " integers");
+      for (counter = 0; counter < num; counter++)
+          array[counter] = input.nextInt();
+
+      System.out.println("Enter the search value:");
+      item = input.nextInt();
+      first = 0;
+      last = num - 1;
+      middle = (first + last)/2;
+
+      while( first <= last )
+      {
+         if ( array[middle] < item )
+           first = middle + 1;
+         else if ( array[middle] == item )
+         {
+           System.out.println(item + " found at location " + (middle + 1) + ".");
+           break;
+         }
+         else
+         {
+             last = middle - 1;
+         }
+         middle = (first + last)/2;
+      }
+      if ( first > last )
+          System.out.println(item + " is not found.\n");
+   }
 }
